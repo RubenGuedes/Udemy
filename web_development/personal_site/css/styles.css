@@ -3,10 +3,10 @@ body {
 }
 
 hr {
+    border-color: grey;
     border-style: none;
     border-top-style: dotted;
-    border-color: grey;
-    border-width: 7px;
+    border-width: 8px;
     width: 5%;
 }
 
