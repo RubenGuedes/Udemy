@@ -6,6 +6,10 @@ h1 {
     margin-top: 0;
 }
 
+.pro {
+    text-decoration: underline;
+}
+
 .top_container {
     background-color: #f1fcfc;
     margin: 0;
