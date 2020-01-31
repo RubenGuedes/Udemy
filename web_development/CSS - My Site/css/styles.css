@@ -6,7 +6,19 @@ h1 {
     margin-top: 0;
 }
 
-.div_class {
+.top_container {
     background-color: #f1fcfc;
     margin: 0;
+}
+
+.middle_container {
+    background-color: blue;
+    height: 200px;
+    width: 200px;
+}
+
+.bottom_container {
+    background-color: red;
+    height: 200px;
+    width: 200px;
 }
