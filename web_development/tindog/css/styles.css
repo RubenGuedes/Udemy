@@ -50,13 +50,19 @@ body {
 
 /* 3 Icons */
 .three-icons {
-  width: 50%;
   color: #ef8172;
 }
-.icon-title {
+.three-icons:hover {
+  color: #ff4c68;
+}
+.topics {
+  text-align: center;
+  margin: 10% 0;
+}
+.topic-title {
   font-family: "Montserrat-bold";
   font-size: 1.5rem;
 }
-.icon-subtitle {
+.topic-subtitle {
   color: #8f8f8f;
 }
