@@ -60,6 +60,17 @@ h2 {
   width: 60%;
 }
 
+@media (max-width: 991px) {
+  #title {
+    text-align: center;
+  }
+  .title-image {
+    position: static;
+    transform: rotate(0deg);
+
+  }
+}
+
 /* 3 Icons */
 #features {
   background-color: #fff;
