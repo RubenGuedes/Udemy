@@ -28,8 +28,6 @@ app.get('/', (req, res) => {
 app.get('/post/:titlePost', (req, res) => {
   let requestedTitle = lodash.lowerCase( req.params.titlePost );
 
-  let item = {title: "Not Found", content: ""};
-
   posts.forEach( (element) => {
       let lodash_ele = lodash.lowerCase( element.title );
 
