@@ -5,6 +5,7 @@ const BODY_PARSER = require('body-parser'),
   PORT = 3000;
 
 let items = ["Buy Food"];
+let workItems = [];
 
 function toDayOfWeek(val) {
   switch (val) {
@@ -43,14 +44,40 @@ APP.get('/', (req, res) => {
   let day = toDayOfWeek(today.getDay());
 
   res.render('list', {
-    kindOfDay: day,
+    listTitle: day,
     newListItem: items
   });
 });
 
 APP.post('/', (req, res) => {
-  items.push(req.body.toDo);
-  res.redirect('/');
+
+  let item = req.body.toDo;
+
+  if (req.body.list === "Work") {
+    workItems.push(item);
+    res.redirect('/work');
+  } else {
+    items.push(item);
+    res.redirect('/');
+  }
+
+});
+
+APP.get('/work', (req, res) => {
+  res.render("list", {
+    listTitle: "Work List",
+    newListItem: workItems
+  });
+});
+
+APP.post('/work', (req, res) => {
+  let item = req.body.newItem;
+  workItems.push(item);
+  res.redirect('/work');
+});
+
+APP.get('/about', (req, res) => {
+  res.render("about");
 });
 
 APP.listen(PORT, () => {

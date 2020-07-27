@@ -1,26 +1,24 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+<%- include('header'); -%>
 
-<head>
-  <meta charset="utf-8">
-  <title>TODO List</title>
-</head>
+  <div class="box" id="heading">
+    <h1><%= listTitle %></h1>
+  </div>
 
-<body>
-  <h1><%= kindOfDay %></h1>
-
-  <ul>
+  <div class="box">
     <% for (let i = 0; i < newListItem.length;  i++ ) { %>
+
+    <div class="item">
+      <input type="checkbox">
       <li><%= newListItem[i] %></li>
-      <link rel="stylesheet" href="css/styles.css">
+    </div>
+
     <% } %>
-  </ul>
 
-  <form class="" action="/" method="post">
-    <input type="text" name="toDo" required>
-    <button type="submit" name="button">Add</button>
-  </form>
+    <form class="item" action="/" method="post">
+      <input type="text" name="toDo" placeholder="New Item" required>
+      <button type="submit" name="list" value=<%= listTitle %>>+</button>
+    </form>
 
-</body>
+  </div>
 
-</html>
+<%- include('footer'); -%>
