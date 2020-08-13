@@ -38,7 +38,7 @@ mongoose.connect(
 );
 mongoose.set('useCreateIndex', true);
 
-const userSchema = new mongoose.Schema ({email: String, password: String, googleId: String});
+const userSchema = new mongoose.Schema ({email: String, password: String, googleId: String, secret: String});
 
 // passportLocalMongoose (Hash and Salt)
 userSchema.plugin(passportLocalMongoose);
@@ -134,15 +134,43 @@ app.post('/register', (req, res) => {
     );
 });
 
-/**
- * If the user is logged in then he/she can view the page
- */
 app.get('/secrets', (req, res) => {
+    User.find(
+        {"secret": {$ne: null}},
+        function(err, foundUsers) {
+            if (err) {
+                console.log(err);
+            } else {
+                if (foundUsers) {
+                    res.render("secrets", {userWithSecrets: foundUsers});
+                }
+            }
+        }
+    );
+});
+
+app.get('/submit', (req, res) => {
     if (req.isAuthenticated()) {
-        res.render('secrets');
+        res.render('submit');
     } else {
         res.redirect('/login');
     }
+});
+
+app.post('/submit', (req, res) => {
+    const submittedSecret = req.body.secret;
+    const user = req.user._id;
+
+    User.findById(user, function(err, foundUser) {
+        if (err) {
+            console.log(err);
+        } else {
+            foundUser.secret = submittedSecret;
+            foundUser.save(function() {
+                res.redirect('/secrets');
+            });
+        }
+    });
 });
 
 app.get('/logout', (req, res) => {
