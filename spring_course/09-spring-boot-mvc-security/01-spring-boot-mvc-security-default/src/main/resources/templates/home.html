@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8">
+        <title>Spring Company Home Page</title>
+    </head>
+    <body>
+
+        <h2>Company Home Page</h2>
+        <hr>
+
+        <p>Welcome to the company home page!</p>
+        <hr>
+
+        <!-- Display user name and role -->
+        <p>
+            User: <span sec:authentication="principal.username"></span>
+            <br><br>
+            Role(s): <span sec:authentication="principal.authorities"></span>
+        </p>
+
+        <!-- Add a logout button -->
+        <form action="#" th:action="@{/logout}" method="POST">
+            <button type="submit">Logout</button>
+        </form>
+
+
+    </body>
+</html>
